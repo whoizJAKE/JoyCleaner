@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoyCleaner - Service de Lavage Auto</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* ce que j'haie le plus, fucking CSS*/
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Style des header */
+        header {
+            background-color: #FF6600;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        /*Nom de la compagnie*/
+        .brand-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background-color: #000;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+            padding: 0 50px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            background-image: url('/api/placeholder/800/600');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+        }
+        
+        .hero-text {
+            max-width: 500px;
+            color: white;
+        }
+        
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            line-height: 0.9;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .orange-banner {
+            background-color: #FF6600;
+            padding: 40px 0;
+            color: white;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        /* Section pour les service ici*/
+        .services {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            width: 100%;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #FF6600;
+        }
+        
+        .service-description {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* section de Ccontact  */
+        .contact {
+            background-color: #000;
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .contact-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #FF6600;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            font-size: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+            color: #FF6600;
+        }
+        
+        /* Couleur du Footer  */
+        footer {
+            background-color: #FF6600;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Response quand le moouse hover sur ou au dessus  d'une image/gotta find a way to make it happen on a phone thooo */
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-bg {
+                width: 100%;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .hero-text {
+                max-width: 100%;
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .orange-banner {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-icon">🚗</div>
+                <div class="brand-name">BORCELLE</div>
+            </div>
+            <div class="brand-name" style="font-size: 3.5rem;">JOYCLEANER</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">LAVE AUTO</h1>
+                <p>UN NETTOYAGE QUI FAIT SOURIRE</p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="orange-banner">
+        Professionnel et méticuleux pour votre véhicule
+    </div>
+    
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">NOS SERVICES</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">INTÉRIEUR</h3>
+                        <p class="service-description">Nettoyage complet de l'intérieur de votre véhicule, des sièges au tableau de bord, en passant par les tapis et les surfaces difficiles d'accès.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">EXTÉRIEUR</h3>
+                        <p class="service-description">Lavage minutieux de la carrosserie, des jantes, des vitres et de tous les détails extérieurs pour un véhicule étincelant.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">REMISE À L'ÉTAT NEUF</h3>
+                        <p class="service-description">Traitement complet pour redonner l'éclat du neuf à votre véhicule, incluant polissage, traitement des plastiques et plus encore.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('/api/placeholder/400/320');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">ANTIROUILLE</h3>
+                        <p class="service-description">Protection durable contre la corrosion pour prolonger la vie de votre véhicule, particulièrement important pour le climat canadien.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <div class="container">
+            <h2 class="contact-title">CONTACTEZ NOUS</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>819-679-6835</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span>JOYCLEANER@OUTLOOK.FR</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JoyCleaner Borcelle. Tous droits réservés. Made by Jacob Hmaiddout</p>
+        </div>
+    </footer>
+</body>
+</html>
